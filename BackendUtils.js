@@ -78,7 +78,7 @@ class Database {
   }
 
   async connect() {
-    this.client = new MongoClient(this.mongoUri);
+    const uri = process.env.MONGO_URI
     await this.client.connect();
     this.db = this.client.db(this.dbName);
     this.collections.Users = this.db.collection("Users");
